@@ -1,0 +1,12 @@
+
+# 10.5 MAC LIBRARIES (own g77 compilation of pgplot)
+# for some reason libutil.a does not work.
+libs = -L. -lshape libutil.a -L/usr/X11R6/lib -lX11 -Wl,-framework -Wl,Foundation -lpgplot -L/Users/kuijken/lib -lcfitsio -L/sw/lib -lz -laquaterm -L/usr/lib -lgcc -O
+#
+# 10.4 MAC LIBRARIES (own g77 compilation of pgplot)
+#libs = -L. -lshape -lutil -L/usr/X11R6/lib -lX11 -Wl,-framework -Wl,Foundation -lpgplot -L/Users/kuijken/lib -lcfitsio -L/sw/lib -lz -laquaterm -L/usr/lib -lgcc -O
+#
+# 10.3.9 MAC LIBRARIES
+#libs = -L. -lshape -lutil -L/usr/X11R6/lib -lX11 -Wl,-framework -Wl,Foundation -lpgplot -L/Users/kuijken/lib -lcfitsio -L/sw/lib -lpng -lz -laquaterm -L/usr/lib -lgcc -O
+#
+F77=g77

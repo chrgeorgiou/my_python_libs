@@ -1,0 +1,57 @@
+# Instuctions: 
+#	1. Leave at least one space between variables and values (and between values themselves)
+
+# single image
+#image	/home/georgiou/KIDS/KIDS-450/Awe/KIDS450_134.0_0.5_r_sci.fits
+image	KIDS450_129.0_-0.5_r_sci_segmap.fits
+
+# image folder (set to 'None' for using one single image)
+image_folder	/home/georgiou/KIDS/KIDS-450/Awe/
+
+# image object catalogue folder
+image_catalogue_folder	/home/georgiou/KIDS/
+
+# segmentation map storage folder (If set 'None' then DEIMOS will not use a segmentation map)
+segmap_folder  /home/georgiou/KIDS/KIDS-450/SegMaps/
+
+# GAMA catalogue 
+GAMA_catalogue	/home/georgiou/KIDS/G3CGalv07.fits
+
+# distance between object to look for spatial matching
+distance	1e-4
+
+# object catalogue store/read directory
+object_catalogue_directory	/home/georgiou/KIDS/KIDS-450/GAMA_matched_band/
+
+# dimension of the postage stamp
+postage_stamp_dimension	300
+
+# psf map folder
+psfmap_folder	/home/georgiou/KIDS/KIDS-450/psfmaps/band/
+
+# weight function sizes to be used
+# example1: sizes	begining end N_of_sizes units('isophotes', 'kpc' or 'pixels')
+# example2: sizes	value units
+#sizes	5 25 21 pixels
+sizes   1 isophotes
+
+# correction order to be used for the Taylor expansion in DEIMOS
+# can be a single value or an array of values
+#correction_order	0 2 4 6 8 10
+correction_order	4
+
+# output directory
+# creates (if not existent) the folders: 'psf', 'sex', 'cat', 'DEIMOS_out'
+output_directory	/home/georgiou/KIDS/GAMAshapes/band/
+
+# deimos script path
+deimos_script	/home/georgiou/My_libs/shapelens/bin.4.8.15-200.fc24.x86_64/MomentsGalPAR
+
+# run type:
+#	'multisize' will run the script with all sizes given and save only the one that maximises Signal-to-Noise ratio.
+#	'single' will run the script with all the sizes given and save a seperate file for each individual size given.
+#	'mixed' will run the script with all the sizes given and save both a multisize file and all the individual sizes.
+run_type	single
+
+# Number of cores to be used (if set to 0, all of the machine's cores will be used)
+Ncores	0

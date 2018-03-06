@@ -1,0 +1,83 @@
+erase vs xmean ymean
+ctype red poi xxm yym
+quit
+macro read center.smo
+quit
+macro read center.smo
+device x11
+quit
+set x=random(5)
+print {x}
+quit
+set x=random(5)
+print {x}
+help random
+ help set
+quit
+macro read m
+macro read multgaus.sm
+device x11
+in
+quit
+box
+set x=1,10
+set y=5,99
+vs x y
+erase
+vs x y
+term
+echo hi
+quit
+hi
+quit
+box
+quit
+box
+quit
+help linfir
+help linfit
+macro read multgaus.sm
+in
+ erase vs (log(gal)) (log(mod))
+ erase vs (ln(gal)) (ln(mod))
+ erase vs (lg(gal)) (lg(mod))
+ erase vs r (lg(gal))
+ctype red poi r (lg(mod))
+print {coefs}
+set vec={m1 m2 m4}
+ctype default erase vs r (lg(gal)) ctype red poi r (lg(mod))
+set vec={m1 m2 m4}
+linfit vec gal coefs
+set mod=coefs[0]*m1+coefs[1]*m2+coefs[2]*m4
+ctype default erase vs r (lg(gal)) ctype red poi r (lg(mod))
+set vec={m0 m1 m2 m4}
+linfit vec gal coefs
+set mod=coefs[0]*m0+coefs[1]*m1+coefs[2]*m2+coefs[3]*m4
+ctype default erase vs r (lg(gal)) ctype red poi r (lg(mod))
+set cc=0*x+1
+set vec={m0 m1 m2 m4 cc}
+linfit vec gal coefs
+ctype default erase vs r (lg(gal)) ctype red poi r (lg(mod))
+set mod=coefs[0]*m0+coefs[1]*m1+coefs[2]*m2+coefs[3]*m4
+ctype default erase vs r (lg(gal)) ctype red poi r (lg(mod))
+set mod=coefs[0]*m0+coefs[1]*m1+coefs[2]*m2+coefs[3]*m4+coefs[4]*cc
+ctype default erase vs r (lg(gal)) ctype red poi r (lg(mod))
+print {coefs}
+set gal=exp(-r/2)
+linfit vec gal coefs
+set mod=coefs[0]*m0+coefs[1]*m1+coefs[2]*m2+coefs[3]*m4+coefs[4]*cc
+print {coefs}
+ctype default erase vs r (lg(gal)) ctype red poi r (lg(mod))
+set vec={m0 m1 m2 m4}
+linfit vec gal coefs
+set mod=coefs[0]*m0+coefs[1]*m1+coefs[2]*m2+coefs[3]*m4
+ctype default erase vs r (lg(gal)) ctype red poi r (lg(mod))
+print {coefs}
+quit
+device x11
+set x=0,100
+set y=exp(-0.5*x*x)*x**12
+erase box con x y
+lim x y erase box con x y
+lim 0 10 y erase box con x y
+quit

@@ -1,0 +1,63 @@
+#									#
+#	Configuration file for running the DEIMOS pipeline.		#
+#									#
+#	Dependencies: SExtractor, DEIMOS, gaap, python libraries	#
+#									#
+#	Leave at least one space between variables and values		#
+
+# image: Specify which image to run (overriden by "image_folder")
+image	/disks/shear10/KiDS/Awe/KiDS-450/KIDS450_213.0_0.5_i_sci.fits
+
+# image_folder: all the images in this folder will be processed (images are files containing "KIDS", "[band]_sci" and end with ".fits")
+image_folder    /disks/shear10/KiDS/Awe/KiDS-450
+
+# band: Broad band filter. 'r', 'g' or 'i'
+band    g
+
+# segmap_folder: directory to store the segmentation maps. A folder $segmap_folder/catalogs will be created with SExtractor catalogues.
+segmap_folder  /disks/shear10/georgiou/KiDS-450/Segmaps
+
+# rband_catalogue: path to the rband catalogue shapes. Used when measuring in other filters and the rband weight function is desired.
+rband_catalogue /net/zwartewater/data1/georgiou/KIDS/GAMAshapes/rband/DEIMOS_GAMA_rband_shape_catalogue.fits
+
+# sextractor_config: path to the sextractor configuration file to be used.
+sextractor_config   /net/zwartewater/data1/georgiou/KIDS/GAMAshapes/simulated_galaxies/sextractor/segmap_sextractor_file.conf
+
+# GAMA catalogue: Directory of the GAMA object catalogue. Must contain the keys "CATAID", "RA", "DEC", "NQ"
+GAMA_catalogue	/net/zwartewater/data1/georgiou/KIDS/catalogues/TilingCatv46.fits
+
+# matched_catalogue_directory: object catalogue save/read directory. Catalogue containing ID, RADEC, XY, IsoRadius of every object measured
+matched_catalogue_directory	/net/zwartewater/data1/georgiou/KIDS/KIDS-450/GAMA_matched
+
+# post_stamp_min/max: min/max dimension of the postage stamp used to measure the shapes
+post_stamp_min  50
+post_stamp_max	300
+
+# psfmap_folder: directory where the psf maps will be saved/read from.
+psfmap_folder	/net/zwartewater/data1/georgiou/KIDS/KIDS-450/psfmaps
+
+# sizes: weight function sizes to be used. Units can be 'isophote' or 'pixels'
+# example1: sizes	begining end N_of_sizes units
+# example2: sizes	value units
+#sizes	5 25 21 pixels
+sizes   1 isophote
+
+# correction_order: to be used for the Taylor expansion in DEIMOS
+# can be a single value or an array of values
+#correction_order	0 2 4 6 8 10
+correction_order	4
+
+# output_directory: Directory where the output of DEIMOS will be stored. Also creates a folder $output_directory/input with all the input catalogues for DEIMOS
+output_directory	/net/zwartewater/data1/georgiou/KIDS/GAMAshapes/gband
+
+# deimos_script: path to the MomentsGalPAR executable script
+deimos_script	/net/zwartewater/data1/georgiou/My_libs/shapelens/bin.redhat7.3/MomentsGalPAR
+
+# run_type: how to run DEIMOS:
+#	'multisize' will run the script with all sizes given and save only the one that maximizes Signal-to-Noise ratio.
+#	'single' will run the script with all the sizes given and save a seperate file for each individual size given.
+#	'mixed' will run the script with all the sizes given and save both a multisize file and all the individual sizes.
+run_type	single
+
+# Ncores: Number of cores to be used when preparing the input catalogues. The shape measurements runs on all available cores of the machine at all times.
+Ncores	24

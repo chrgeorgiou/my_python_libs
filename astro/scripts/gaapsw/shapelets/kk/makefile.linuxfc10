@@ -1,0 +1,8 @@
+#
+#LINUX LIBRARIES (FC10)
+libs = -L. -lshape -lutil ~/lib/pgplot-fc10/libpgplot.so -L ~/lib -lcfitsio -lX11 -O
+#
+#
+# COMPILER
+#
+F77 = gfortran
